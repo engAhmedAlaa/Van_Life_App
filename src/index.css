@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .wrapper {
+    @apply flex flex-col max-w-2xl min-h-screen mx-auto bg-orange-50;
+  }
+}
