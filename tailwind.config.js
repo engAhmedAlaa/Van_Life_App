@@ -8,9 +8,21 @@ export default {
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
-      colors: {
-        'light-orange': '#FFCC8D',
+      gridTemplateColumns: {
+        responsive: 'repeat(auto-fill, minmax(250px, 1fr))',
       },
+      keyframes: {
+        'fade-in': {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+      },
+      animation: {
+        'fade-in': 'fade-in 1s',
+      },
+      // animation: {
+      //   wiggle: 'wiggle 1s ease-in-out infinite',
+      // }
     },
   },
   plugins: [],

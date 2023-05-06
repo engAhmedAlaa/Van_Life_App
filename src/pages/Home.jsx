@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom';
 
 function Home() {
   return (
-    <main className="grow px-6 bg-[url('./assets/image54.png')] relative flex items-center text-white">
+    <main className="grow px-6 py-8 bg-[url('./assets/image54.png')] bg-cover relative flex items-center text-white">
       <div className="absolute inset-0 bg-black/40"></div>
       <div className="relative">
         <h1 className="text-4xl font-extrabold">
           You got the travel plans, we got the travel vans.
         </h1>
-        <p className="mt-6 font-medium">
+        <p className="mt-6">
           Add adventure to your life by joining the #vanlife movement. Rent the
           perfect van to make your perfect road trip.
         </p>

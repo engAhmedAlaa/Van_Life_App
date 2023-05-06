@@ -7,16 +7,16 @@ function About() {
       <div>
         <img src={imgUrl} alt="Van Image" className="w-full " />
       </div>
-      <div className="px-6 py-12 text-neutral-900">
+      <div className="px-6 py-12">
         <h1 className="text-3xl font-bold">
           Don’t squeeze in a sedan when you could relax in a van.
         </h1>
-        <p className="font-medium mt-8">
+        <p className="mt-8">
           Our mission is to enliven your road trip with the perfect travel van
           rental. Our vans are recertified before each trip to ensure your
           travel plans can go off without a hitch. (Hitch costs extra 😉)
         </p>
-        <p className="font-medium mt-6">
+        <p className="mt-6">
           Our team is full of vanlife enthusiasts who know firsthand the magic
           of touring the world on 4 wheels.
         </p>

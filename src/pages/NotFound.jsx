@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 
 function NotFound() {
   return (
-    <main className="grow px-6 flex flex-col justify-center">
-      <h1 className="text-neutral-900 text-4xl font-bold">
+    <main className="grow px-6 py-8 flex flex-col justify-center">
+      <h1 className="text-4xl font-bold">
         Sorry, the page you were looking for was not found.
       </h1>
       <Link to="/">
