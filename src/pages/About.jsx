@@ -7,7 +7,7 @@ function About() {
       <div>
         <img src={imgUrl} alt="Van Image" className="w-full " />
       </div>
-      <div className="px-6 py-12">
+      <div className="px-4 sm:px-6 pt-8 pb-16">
         <h1 className="text-3xl font-bold">
           Don’t squeeze in a sedan when you could relax in a van.
         </h1>

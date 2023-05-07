@@ -8,6 +8,9 @@ export default {
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
+      screens: {
+        sm: '450px',
+      },
       gridTemplateColumns: {
         responsive: 'repeat(auto-fill, minmax(250px, 1fr))',
       },
@@ -20,9 +23,6 @@ export default {
       animation: {
         'fade-in': 'fade-in 1s',
       },
-      // animation: {
-      //   wiggle: 'wiggle 1s ease-in-out infinite',
-      // }
     },
   },
   plugins: [],

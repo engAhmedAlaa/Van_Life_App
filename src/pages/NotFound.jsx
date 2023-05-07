@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function NotFound() {
   return (
-    <main className="grow px-6 py-8 flex flex-col justify-center">
+    <main className="grow px-4 sm:px-6 pt-6 pb-16 flex flex-col justify-center">
       <h1 className="text-4xl font-bold">
         Sorry, the page you were looking for was not found.
       </h1>

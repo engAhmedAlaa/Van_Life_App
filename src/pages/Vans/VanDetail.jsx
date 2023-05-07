@@ -13,7 +13,7 @@ function VanDetail() {
   // if (status === 'success' && !data) navigate('/Unfound', { replace: true });
 
   return (
-    <main className="grow px-6 pt-8 pb-20">
+    <main className="grow px-4 sm:px-6 pt-8 pb-16">
       <GoBackLink />
       {status === 'loading' ? (
         <Loading />

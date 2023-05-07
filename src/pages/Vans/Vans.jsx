@@ -7,19 +7,29 @@ function Vans() {
   const { data, status, error } = useQuery(['vans'], getVans);
   const [searchParams, setSearchParams] = useSearchParams();
   const types = ['simple', 'luxury', 'rugged'];
-  let selectedType;
-  let visibleVans;
+  const typeFilter = searchParams.get('type');
+  const displayedVans = !data
+    ? null
+    : typeFilter
+    ? data.vans.filter((van) => van.type === typeFilter)
+    : data.vans;
 
-  if ([...searchParams].length) selectedType = [...searchParams][0][1];
+  // if (data) {
+  //   if (typeFilter)
+  //     displayedVans = data.vans.filter((van) => van.type === typeFilter);
+  //   else displayedVans = data.vans;
+  // }
 
-  if (data) {
-    if (selectedType)
-      visibleVans = data.vans.filter((van) => van.type === selectedType);
-    else visibleVans = data.vans;
+  function handleFilterChange(key, value) {
+    setSearchParams((prevParams) => {
+      if (value) prevParams.set(key, value);
+      else prevParams.delete(key);
+      return prevParams;
+    });
   }
 
   return (
-    <main className="grow px-6 pt-8 pb-20">
+    <main className="grow px-4 sm:px-6 pt-8 pb-16">
       <h1 className="font-bold text-3xl">Explore our van options</h1>
       <div className=" mt-6 flex flex-wrap justify-center items-center gap-x-10 gap-y-4 text-neutral-600">
         <ul className="flex flex-wrap gap-x-5 gap-y-4 justify-center">
@@ -27,19 +37,19 @@ function Vans() {
             <Type
               key={type}
               type={type}
-              selectedType={selectedType}
-              setSearchParams={setSearchParams}
+              typeFilter={typeFilter}
+              handleFilterChange={handleFilterChange}
             />
           ))}
         </ul>
-        <button
-          className={`cursor-pointer hover:underline hover:text-neutral-900 ${
-            selectedType === 'all' ? 'underline text-neutral-900' : ''
-          }`}
-          onClick={() => setSearchParams({})}
-        >
-          Clear filters
-        </button>
+        {typeFilter && (
+          <button
+            className="cursor-pointer hover:underline hover:text-neutral-900"
+            onClick={() => handleFilterChange('type', null)}
+          >
+            Clear filters
+          </button>
+        )}
       </div>
       {status === 'loading' ? (
         <Loading />
@@ -47,8 +57,8 @@ function Vans() {
         <h1>{error.message}</h1>
       ) : (
         <div className="mt-11 grid grid-cols-responsive gap-x-8 gap-y-7 animate-fade-in">
-          {visibleVans.map((van) => (
-            <Van key={van.id} {...van} />
+          {displayedVans.map((van) => (
+            <Van key={van.id} {...van} search={`?${searchParams.toString()}`} />
           ))}
         </div>
       )}
@@ -56,10 +66,10 @@ function Vans() {
   );
 }
 
-function Van({ id, name, price, imageUrl, type }) {
+function Van({ id, name, price, imageUrl, type, search }) {
   return (
     <div>
-      <Link to={id}>
+      <Link to={id} state={{ search }}>
         <img
           src={imageUrl}
           alt="Van Image"
@@ -90,11 +100,11 @@ function Van({ id, name, price, imageUrl, type }) {
   );
 }
 
-function Type({ type, selectedType, setSearchParams }) {
+function Type({ type, typeFilter, handleFilterChange }) {
   const color =
-    selectedType === 'simple'
+    typeFilter === 'simple'
       ? 'bg-orange-400'
-      : selectedType === 'rugged'
+      : typeFilter === 'rugged'
       ? 'bg-teal-800'
       : 'bg-neutral-900';
   const hoverState =
@@ -107,9 +117,9 @@ function Type({ type, selectedType, setSearchParams }) {
     <li key={type}>
       <button
         className={`rounded-md px-5 py-2 ${
-          type === selectedType ? `${color} text-orange-100` : 'bg-orange-100'
-        } ${hoverState} capitalize transition-colors`}
-        onClick={() => setSearchParams({ type })}
+          type === typeFilter ? `${color} text-orange-100` : 'bg-orange-100'
+        } ${hoverState} capitalize transition-all active:scale-95`}
+        onClick={() => handleFilterChange('type', type)}
       >
         {type}
       </button>

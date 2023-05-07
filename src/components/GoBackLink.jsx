@@ -1,12 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function GoBackLink() {
+  const location = useLocation();
+  const search = location.state?.search || '';
+  const typeFilter = new URLSearchParams(search).get('type') || null;
+
   return (
     <button>
-      <Link to=".." className="flex gap-x-2 group">
+      <Link to={`..${search}`} className="flex gap-x-2 group">
         <ArrowLeft className="w-5 stroke-neutral-600 group-hover:stroke-neutral-900 transition-colors" />
         <span className="text-neutral-600 group-hover:text-neutral-900 group-hover:underline transition-colors">
-          Back to all vans
+          Back to {typeFilter ? typeFilter : 'all'} vans
         </span>
       </Link>
     </button>

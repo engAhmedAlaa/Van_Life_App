@@ -5,7 +5,7 @@ function Footer() {
   const years = data.getFullYear();
 
   return (
-    <footer className="py-6 bg-neutral-800 text-zinc-400 text-center text-sm">
+    <footer className="px-4 sm:px-6 py-6 bg-neutral-800 text-zinc-400 text-center text-sm">
       <p>
         &copy; {years}{' '}
         <Link to="/" className="font-semibold text-orange-400 hover:underline">

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function Home() {
   return (
-    <main className="grow px-6 py-8 bg-[url('./assets/image54.png')] bg-cover relative flex items-center text-white">
+    <main className="grow px-4 sm:px-6 pt-6 pb-16 bg-[url('./assets/image54.png')] bg-cover relative flex items-center text-white">
       <div className="absolute inset-0 bg-black/40"></div>
       <div className="relative">
         <h1 className="text-4xl font-extrabold">
